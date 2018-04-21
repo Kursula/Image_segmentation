@@ -36,5 +36,10 @@ def weighted_dice(y_true, y_pred):
     num = (2. * K.sum(y_true_f * y_pred_f) + smooth)
     denominator = (K.sum(y_true_f) + K.sum(y_pred_f * weight_f) + smooth)
     return -1. * (num / denominator)
-'''
-Then just pass the pixel weight array in the target channel 1 and keep the model output as such (single channel output and the  training mask channel 0 contains the target mask). When using heavy loss weights for certain areas, make sure that those correspond to some real spatial features in the input images. If you try to force the model to separate overlapping instances when there is no real borderline separating those in the image, the model will just get confused and it will leave very wide border between the instances and produces heavily dilated segment masks. 
+```
+
+Then just pass the pixel weight array in the target channel 1 and keep the model output as such (single channel output and the  training mask channel 0 contains the target mask). When using heavy loss weights for certain areas, make sure that those correspond to some real spatial features in the input images. If you try to force the model to separate overlapping instances when there is no real borderline separating those in the image, the model will just get confused and it will leave very wide border between the instances and produces heavily dilated segment masks.  
+
+
+
+
